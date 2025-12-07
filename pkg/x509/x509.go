@@ -21,7 +21,6 @@ import (
 	"errors"
 
 	"github.com/sigstore/sigstore/pkg/cryptoutils"
-	"github.com/sigstore/sigstore/pkg/cryptoutils/goodkey"
 )
 
 var (
@@ -111,5 +110,5 @@ func VerifyCertChain(certs []*x509.Certificate, signer crypto.Signer, enforceInt
 	}
 
 	// Verify the key's strength
-	return goodkey.ValidatePubKey(signer.Public())
+	return cryptoutils.ValidatePubKey(signer.Public())
 }
